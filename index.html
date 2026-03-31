@@ -355,6 +355,51 @@
             }
         }
 
+        /* Page Flip Animation */
+        @keyframes flipPageForward {
+            0% {
+                opacity: 1;
+                transform: rotateY(0deg);
+            }
+            50% {
+                opacity: 0.5;
+                transform: rotateY(90deg);
+            }
+            100% {
+                opacity: 1;
+                transform: rotateY(0deg);
+            }
+        }
+
+        @keyframes flipPageBackward {
+            0% {
+                opacity: 1;
+                transform: rotateY(0deg);
+            }
+            50% {
+                opacity: 0.5;
+                transform: rotateY(-90deg);
+            }
+            100% {
+                opacity: 1;
+                transform: rotateY(0deg);
+            }
+        }
+
+        .flipbook-page.flip-forward {
+            animation: flipPageForward 0.6s ease-in-out;
+        }
+
+        .flipbook-page.flip-backward {
+            animation: flipPageBackward 0.6s ease-in-out;
+        }
+
+        /* Mobile Swipe Enhancement */
+        .flipbook-content {
+            touch-action: pan-y;
+            user-select: none;
+        }
+
         .page-title {
             font-size: 28px;
             color: var(--dark-text);
@@ -734,6 +779,72 @@
 
             .featured-section h2 {
                 font-size: 24px;
+            }
+
+            /* Mobile Flipbook Improvements */
+            .flipbook-container {
+                margin: 30px auto;
+                border-radius: 10px;
+            }
+
+            .flipbook-header {
+                padding: 20px;
+            }
+
+            .flipbook-header h2 {
+                font-size: 24px;
+            }
+
+            .flipbook-header p {
+                font-size: 12px;
+            }
+
+            .flipbook-page {
+                padding: 30px 20px;
+                min-height: 500px;
+            }
+
+            .page-title {
+                font-size: 22px;
+                margin-bottom: 20px;
+            }
+
+            .page-products-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .flipbook-navigation {
+                padding: 20px;
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .nav-arrow {
+                width: 45px;
+                height: 45px;
+                font-size: 20px;
+            }
+
+            .page-indicator {
+                font-size: 12px;
+            }
+
+            .page-product-card {
+                height: auto;
+            }
+
+            .page-product-image {
+                height: 120px;
+                font-size: 50px;
+            }
+
+            .page-product-name {
+                font-size: 14px;
+            }
+
+            .page-product-description {
+                font-size: 11px;
             }
         }
 
@@ -1143,11 +1254,44 @@
         ];
 
         let currentPageIndex = 0;
+        let touchStartX = 0;
+        let touchEndX = 0;
 
         // Initialize
         document.addEventListener('DOMContentLoaded', function() {
             initializeFlipbook();
+            addSwipeListeners();
         });
+
+        // Add Swipe Listeners for Mobile
+        function addSwipeListeners() {
+            const flipbookContent = document.getElementById('flipbookContent');
+            
+            flipbookContent.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+            }, false);
+
+            flipbookContent.addEventListener('touchend', (e) => {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+            }, false);
+        }
+
+        // Handle Swipe
+        function handleSwipe() {
+            const swipeThreshold = 50; // Minimum distance for swipe
+            const diff = touchStartX - touchEndX;
+
+            if (Math.abs(diff) > swipeThreshold) {
+                if (diff > 0) {
+                    // Swipe left - next page
+                    nextPageWithFlip();
+                } else {
+                    // Swipe right - previous page
+                    previousPageWithFlip();
+                }
+            }
+        }
 
         // Initialize Flipbook
         function initializeFlipbook() {
@@ -1301,6 +1445,31 @@
             if (currentPageIndex > 0) {
                 currentPageIndex--;
                 updateFlipbookNavigation();
+            }
+        }
+
+        // Navigation with Flip Animation
+        function nextPageWithFlip() {
+            if (currentPageIndex < flipbookPages.length - 1) {
+                const currentPage = document.querySelectorAll('.flipbook-page')[currentPageIndex];
+                currentPage.classList.add('flip-forward');
+                currentPageIndex++;
+                setTimeout(() => {
+                    updateFlipbookNavigation();
+                    currentPage.classList.remove('flip-forward');
+                }, 300);
+            }
+        }
+
+        function previousPageWithFlip() {
+            if (currentPageIndex > 0) {
+                const currentPage = document.querySelectorAll('.flipbook-page')[currentPageIndex];
+                currentPage.classList.add('flip-backward');
+                currentPageIndex--;
+                setTimeout(() => {
+                    updateFlipbookNavigation();
+                    currentPage.classList.remove('flip-backward');
+                }, 300);
             }
         }
 
