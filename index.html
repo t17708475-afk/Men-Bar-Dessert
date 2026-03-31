@@ -1,80 +1,1133 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dessert Bar</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://unpkg.com/framer-motion/dist/framer-motion.umd.js"></script>
-  <style>
-    html { scroll-behavior: smooth; }
-  </style>
-</head>
-<body class="bg-white text-gray-800 font-sans">
-
-  <!-- Hero -->
-  <section class="h-screen flex flex-col justify-center items-center text-center px-4">
-    <h1 class="text-5xl font-bold mb-4">Sweet Heaven</h1>
-    <p class="text-lg text-gray-500 mb-6">Le bar à desserts moderne</p>
-    <a href="#menu" class="px-6 py-3 bg-black text-white rounded-full hover:bg-gray-800 transition">Voir le menu</a>
-  </section>
-
-  <!-- Menu -->
-  <section id="menu" class="py-20 px-6 max-w-5xl mx-auto">
-    <h2 class="text-3xl font-semibold text-center mb-12">Notre Menu</h2>
-
-    <div class="grid md:grid-cols-2 gap-10">
-
-      <div class="group p-6 border rounded-2xl hover:shadow-xl transition duration-300">
-        <h3 class="text-xl font-semibold mb-2">Gaufres</h3>
-        <p class="text-gray-500">Nutella, fruits frais, chantilly</p>
-      </div>
-
-      <div class="group p-6 border rounded-2xl hover:shadow-xl transition duration-300">
-        <h3 class="text-xl font-semibold mb-2">Crêpes</h3>
-        <p class="text-gray-500">Sucre, caramel beurre salé, chocolat</p>
-      </div>
-
-      <div class="group p-6 border rounded-2xl hover:shadow-xl transition duration-300">
-        <h3 class="text-xl font-semibold mb-2">Milkshakes</h3>
-        <p class="text-gray-500">Vanille, fraise, Oreo</p>
-      </div>
-
-      <div class="group p-6 border rounded-2xl hover:shadow-xl transition duration-300">
-        <h3 class="text-xl font-semibold mb-2">Glaces</h3>
-        <p class="text-gray-500">2 ou 3 boules au choix</p>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- About -->
-  <section class="bg-gray-100 py-20 px-6 text-center">
-    <h2 class="text-3xl font-semibold mb-6">À propos</h2>
-    <p class="max-w-2xl mx-auto text-gray-600">
-      Chez Sweet Heaven, nous créons des desserts gourmands avec des ingrédients de qualité pour une expérience unique.
-    </p>
-  </section>
-
-  <!-- Footer -->
-  <footer class="py-10 text-center text-gray-400 text-sm">
-    © 2026 Sweet Heaven - Tous droits réservés
-  </footer>
-
-  <script>
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('opacity-100','translate-y-0');
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu Desserts - Cupcakes Premium & Café Artisan</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-      });
-    }, { threshold: 0.2 });
 
-    document.querySelectorAll('section, .group').forEach(el => {
-      el.classList.add('opacity-0','translate-y-10','transition','duration-700');
-      observer.observe(el);
-    });
-  </script>
+        :root {
+            --primary-color: #FF6B9D;
+            --secondary-color: #2C3E50;
+            --accent-color: #FDB750;
+            --light-bg: #F8F9FA;
+            --white: #FFFFFF;
+            --dark-text: #2C3E50;
+        }
 
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--light-bg);
+            color: var(--dark-text);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            background: linear-gradient(135deg, var(--secondary-color) 0%, #34495E 100%);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--secondary-color) 0%, #3A4F63 100%);
+            color: var(--white);
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            animation: slideDown 0.8s ease;
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 12px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 107, 157, 0.3);
+        }
+
+        .cta-button:hover {
+            background: #FF5A8F;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 107, 157, 0.4);
+        }
+
+        /* Search Bar */
+        .search-section {
+            display: none;
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .search-bar {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 12px 20px;
+            font-size: 16px;
+            border: 2px solid var(--secondary-color);
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(255, 107, 157, 0.1);
+        }
+
+        .search-bar i {
+            position: absolute;
+            right: 20px;
+            color: var(--secondary-color);
+            pointer-events: none;
+        }
+
+        /* Category Filter */
+        .filter-section {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 8px 20px;
+            border: 2px solid var(--secondary-color);
+            background: var(--white);
+            color: var(--dark-text);
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--primary-color);
+            color: var(--white);
+            border-color: var(--primary-color);
+        }
+
+        /* Products Grid */
+        .products-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px 40px;
+        }
+
+        .section-title {
+            font-size: 36px;
+            color: var(--dark-text);
+            margin: 40px 0 30px;
+            text-align: center;
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--primary-color);
+            border-radius: 2px;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .product-card {
+            background: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            animation: fadeIn 0.6s ease;
+        }
+
+        .product-card.hidden {
+            display: none !important;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #FFE0E6 0%, #FFF4D6 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 80px;
+            transition: all 0.3s ease;
+        }
+
+        .product-card:hover .product-image {
+            background: linear-gradient(135deg, #FF6B9D 0%, #FDB750 100%);
+        }
+
+        .product-info {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-name {
+            font-size: 20px;
+            font-weight: bold;
+            color: var(--dark-text);
+            margin-bottom: 10px;
+        }
+
+        .product-description {
+            font-size: 14px;
+            color: #7F8C8D;
+            margin-bottom: 15px;
+            flex-grow: 1;
+        }
+
+        .product-price {
+            font-size: 20px;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        /* Sort Filters */
+        .sort-filters {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 10px;
+            flex-wrap: wrap;
+        }
+
+        .sort-btn {
+            padding: 4px 12px;
+            border: 1px solid #DDD;
+            background: var(--white);
+            color: var(--dark-text);
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            font-size: 12px;
+        }
+
+        .sort-btn:hover,
+        .sort-btn.active-sort {
+            background: var(--primary-color);
+            color: var(--white);
+            border-color: var(--primary-color);
+        }
+
+        /* Featured Section */
+        .featured-section {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #FF8EAD 100%);
+            color: var(--white);
+            padding: 60px 20px;
+            margin: 60px auto;
+            max-width: 1200px;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .featured-section h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        .featured-section p {
+            font-size: 16px;
+            max-width: 600px;
+            margin: 0 auto 30px;
+            opacity: 0.95;
+        }
+
+        /* Contact Form Section */
+        .contact-section {
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: stretch;
+        }
+
+        .contact-form {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .contact-form h2 {
+            font-size: 28px;
+            margin-bottom: 30px;
+            color: var(--dark-text);
+            font-weight: 700;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--secondary-color);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid var(--secondary-color);
+            border-radius: 8px;
+            font-size: 14px;
+            font-family: inherit;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-submit {
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 12px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            font-weight: 500;
+        }
+
+        .form-submit:hover {
+            background: #FF5A8F;
+            transform: translateY(-2px);
+        }
+
+        /* Coordinates Section */
+        .coordinates-section {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .coordinates-section h2 {
+            font-size: 28px;
+            margin-bottom: 30px;
+            color: var(--dark-text);
+        }
+
+        .coordinate-item {
+            margin-bottom: 25px;
+            display: flex;
+            gap: 15px;
+        }
+
+        .coordinate-item i {
+            font-size: 24px;
+            color: var(--primary-color);
+            min-width: 30px;
+        }
+
+        .coordinate-item div h3 {
+            font-size: 16px;
+            margin-bottom: 5px;
+            color: var(--dark-text);
+        }
+
+        .coordinate-item div p {
+            color: #7F8C8D;
+            margin: 0;
+        }
+
+        .map-container {
+            margin-top: 30px;
+            border-radius: 10px;
+            overflow: hidden;
+            height: 300px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Social Media Section */
+        .social-section {
+            background: linear-gradient(135deg, var(--secondary-color) 0%, #34495E 100%);
+            color: var(--white);
+            padding: 25px 20px;
+            text-align: center;
+        }
+
+        .social-section h2 {
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 16px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: var(--accent-color);
+            transform: translateY(-5px);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--secondary-color);
+            color: var(--white);
+            text-align: center;
+            padding: 30px 20px;
+        }
+
+        footer p {
+            opacity: 0.8;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+                gap: 20px;
+            }
+
+            .filter-section {
+                gap: 10px;
+            }
+
+            .filter-btn {
+                padding: 6px 15px;
+                font-size: 14px;
+            }
+
+            .contact-section {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .section-title {
+                font-size: 28px;
+            }
+
+            .featured-section h2 {
+                font-size: 24px;
+            }
+        }
+
+        /* Animations */
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo">🧁 Menu Desserts</a>
+            <ul class="nav-links">
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Bienvenue au Paradis des Desserts</h1>
+        <p>Découvrez notre collection exquise de cupcakes premium et de café artisan</p>
+        <button class="cta-button" onclick="document.getElementById('cupcakes').scrollIntoView({behavior: 'smooth'})">Découvrir le Menu</button>
+    </section>
+
+    <!-- Filter Section -->
+    <div class="filter-section">
+        <button class="filter-btn active" onclick="filterProducts('all')">Tous les Produits</button>
+        <button class="filter-btn" onclick="filterProducts('cupcake')">Cupcakes</button>
+        <button class="filter-btn" onclick="filterProducts('coffee')">Café</button>
+        <button class="filter-btn" onclick="filterProducts('additive')">Fruits</button>
+    </div>
+
+    <!-- Search Bar -->
+    <section class="search-section">
+        <div class="search-bar">
+            <input type="text" class="search-input" id="searchInput" placeholder="Rechercher un produit..." autocomplete="off">
+            <i class="fas fa-search"></i>
+        </div>
+    </section>
+
+    <!-- Cupcakes Section -->
+    <section class="products-section">
+        <h2 class="section-title" id="cupcakes">Menu Cupcakes</h2>
+        <div class="sort-filters" id="cupcakesSortFilters">
+            <button class="sort-btn" onclick="sortProducts('cupcake', 'alpha')">A-Z</button>
+            <button class="sort-btn" onclick="sortProducts('cupcake', 'price-asc')">Prix ↑</button>
+            <button class="sort-btn" onclick="sortProducts('cupcake', 'price-desc')">Prix ↓</button>
+        </div>
+        <div class="products-grid" id="cupcakesGrid"></div>
+    </section>
+
+    <!-- Featured Section -->
+    <section class="featured-section">
+        <h2>❤️ Cupcake Spécial</h2>
+        <p>Notre cupcake signature, confectionné avec amour et passion. Préparé avec des ingrédients premium et garni de notre glaçage signature. Parfait pour célébrer les moments spéciaux avec ceux que vous aimez.</p>
+        <button class="cta-button" onclick="scrollToProduct('love-cupcake')">Voir les Détails</button>
+    </section>
+
+    <!-- Coffee Section -->
+    <section class="products-section">
+        <h2 class="section-title" id="coffee">Café Chaud</h2>
+        <div class="sort-filters" id="coffeeSortFilters">
+            <button class="sort-btn" onclick="sortProducts('coffee', 'alpha')">A-Z</button>
+            <button class="sort-btn" onclick="sortProducts('coffee', 'price-asc')">Prix ↑</button>
+            <button class="sort-btn" onclick="sortProducts('coffee', 'price-desc')">Prix ↓</button>
+        </div>
+        <div class="products-grid" id="coffeeGrid"></div>
+    </section>
+
+    <!-- Additives Section -->
+    <section class="products-section">
+        <h2 class="section-title" id="additives">Fruits & Additifs</h2>
+        <div class="sort-filters" id="additivesSortFilters">
+            <button class="sort-btn" onclick="sortProducts('additive', 'alpha')">A-Z</button>
+            <button class="sort-btn" onclick="sortProducts('additive', 'price-asc')">Prix ↑</button>
+            <button class="sort-btn" onclick="sortProducts('additive', 'price-desc')">Prix ↓</button>
+        </div>
+        <div class="products-grid" id="additivesGrid"></div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="contact-form">
+            <h2>Contactez-Nous</h2>
+            <form onsubmit="handleContactSubmit(event)">
+                <div class="form-group">
+                    <label for="name">Nom</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Téléphone</label>
+                    <input type="tel" id="phone" name="phone">
+                </div>
+                <div class="form-group">
+                    <label for="subject">Sujet</label>
+                    <input type="text" id="subject" name="subject" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                <button type="submit" class="form-submit">Envoyer</button>
+            </form>
+        </div>
+
+        <div class="coordinates-section">
+            <h2>Nos Coordonnées</h2>
+            <div class="coordinate-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <div>
+                    <h3>Adresse</h3>
+                    <p>123 Rue des Desserts<br>75001 Paris, France</p>
+                </div>
+            </div>
+            <div class="coordinate-item">
+                <i class="fas fa-phone"></i>
+                <div>
+                    <h3>Téléphone</h3>
+                    <p>+33 1 23 45 67 89</p>
+                </div>
+            </div>
+            <div class="coordinate-item">
+                <i class="fas fa-envelope"></i>
+                <div>
+                    <h3>Email</h3>
+                    <p>contact@menudesserts.fr</p>
+                </div>
+            </div>
+            <div class="coordinate-item">
+                <i class="fas fa-clock"></i>
+                <div>
+                    <h3>Horaires</h3>
+                    <p>Lun-Ven: 08h-20h<br>Sam-Dim: 10h-22h</p>
+                </div>
+            </div>
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.9917385734177!2d2.3522219!3d48.8566140!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66e2964e34e2d%3A0x412d4d4289c50008!2sParis!5e0!3m2!1sfr!2sfr!4v1234567890" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Section -->
+    <section class="social-section">
+        <h2>Suivez-Nous</h2>
+        <div class="social-links">
+            <a href="https://instagram.com" target="_blank" class="social-link" title="Instagram">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://facebook.com" target="_blank" class="social-link" title="Facebook">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://tiktok.com" target="_blank" class="social-link" title="TikTok">
+                <i class="fab fa-tiktok"></i>
+            </a>
+            <a href="https://x.com" target="_blank" class="social-link" title="X">
+                <i class="fab fa-x-twitter"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Menu Desserts. Tous droits réservés. | Réalisé avec ❤️</p>
+    </footer>
+
+    <script>
+        // Products Data
+        const products = {
+            cupcakes: [
+                {
+                    id: 'cupcake-lemon',
+                    name: 'Cupcake au Citron',
+                    description: 'Cupcake savoureux au citron avec une texture légère et aérée',
+                    price: '4.50 €',
+                    emoji: '🧁',
+                    category: 'cupcake'
+                },
+                {
+                    id: 'cupcake-cherry',
+                    name: 'Cupcake à la Cerise',
+                    description: 'Cupcake sucré aux cerises avec une délicate garniture de cerises',
+                    price: '4.50 €',
+                    emoji: '🧁',
+                    category: 'cupcake'
+                },
+                {
+                    id: 'sweet-berry',
+                    name: 'Cupcake Sucré aux Fruits Rouges',
+                    description: 'Délicieux cupcake aux fruits rouges mélangés',
+                    price: '4.50 €',
+                    emoji: '🧁',
+                    category: 'cupcake'
+                },
+                {
+                    id: 'romantic-cupcake',
+                    name: 'Cupcake Romantique',
+                    description: 'Elegant cupcake au chocolat avec glaçage rose, parfait pour les occasions romantiques',
+                    price: '4.50 €',
+                    emoji: '🧁',
+                    category: 'cupcake'
+                },
+                {
+                    id: 'chocolate-cupcake',
+                    name: 'Cupcake au Chocolat',
+                    description: 'Riche et délicieux cupcake au chocolat avec une saveur de cacao profonde',
+                    price: '4.50 €',
+                    emoji: '🧁',
+                    category: 'cupcake'
+                },
+                {
+                    id: 'love-cupcake',
+                    name: 'Cupcake Spécial',
+                    description: 'Notre cupcake signature avec des ingrédients premium et glaçage signature',
+                    price: '5.50 €',
+                    emoji: '❤️',
+                    category: 'cupcake'
+                }
+            ],
+            coffee: [
+                {
+                    id: 'cappuccino',
+                    name: 'Cappuccino',
+                    description: 'Espresso lisse avec une généreuse couche de mousse de lait crémeuse',
+                    price: '3.50 €',
+                    emoji: '☕',
+                    category: 'coffee'
+                },
+                {
+                    id: 'americano',
+                    name: 'Américano',
+                    description: 'Shots d\'espresso forts versés sur de l\'eau chaude, audacieux et riche',
+                    price: '3.00 €',
+                    emoji: '☕',
+                    category: 'coffee'
+                },
+                {
+                    id: 'macchiato',
+                    name: 'Macchiato',
+                    description: 'Espresso marqué avec une touche de mousse de lait pour un goût audacieux',
+                    price: '3.00 €',
+                    emoji: '☕',
+                    category: 'coffee'
+                },
+                {
+                    id: 'espresso',
+                    name: 'Espresso',
+                    description: 'Un shot pur et concentré de café premium de qualité supérieure',
+                    price: '2.50 €',
+                    emoji: '☕',
+                    category: 'coffee'
+                },
+                {
+                    id: 'irish-coffee',
+                    name: 'Café Irlandais',
+                    description: 'Classique café irlandais avec du whiskey et couronné de crème fouettée',
+                    price: '4.50 €',
+                    emoji: '☕',
+                    category: 'coffee'
+                }
+            ],
+            additives: [
+                {
+                    id: 'banana',
+                    name: 'Banane',
+                    description: 'Additif banane frais et crémeux pour une saveur riche',
+                    price: '0.80 €',
+                    emoji: '🍌',
+                    category: 'additive'
+                },
+                {
+                    id: 'cherry',
+                    name: 'Cerise',
+                    description: 'Topping cerise acidulé et sucré',
+                    price: '0.80 €',
+                    emoji: '🍒',
+                    category: 'additive'
+                },
+                {
+                    id: 'hazelnut',
+                    name: 'Noisette',
+                    description: 'Arôme riche et savoureux de noisette',
+                    price: '1.00 €',
+                    emoji: '🌰',
+                    category: 'additive'
+                },
+                {
+                    id: 'passion-fruit',
+                    name: 'Fruit de la Passion',
+                    description: 'Fruit de la passion exotique avec des notes tropicales',
+                    price: '1.00 €',
+                    emoji: '🟣',
+                    category: 'additive'
+                },
+                {
+                    id: 'orange',
+                    name: 'Orange',
+                    description: 'Saveur d\'agrumes orange brillante',
+                    price: '0.80 €',
+                    emoji: '🍊',
+                    category: 'additive'
+                },
+                {
+                    id: 'strawberry',
+                    name: 'Fraise',
+                    description: 'Additif fraise frais et sucré',
+                    price: '0.80 €',
+                    emoji: '🍓',
+                    category: 'additive'
+                },
+                {
+                    id: 'blueberry',
+                    name: 'Myrtille',
+                    description: 'Arôme myrtille riche en antioxydants',
+                    price: '1.00 €',
+                    emoji: '🫐',
+                    category: 'additive'
+                },
+                {
+                    id: 'tangerine',
+                    name: 'Mandarine',
+                    description: 'Mélange d\'agrumes mandarine sucré',
+                    price: '0.80 €',
+                    emoji: '🍊',
+                    category: 'additive'
+                }
+            ]
+        };
+
+        let currentFilter = 'all';
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            renderProducts('all');
+            setupSearch();
+        });
+
+        // Setup Search Functionality
+        function setupSearch() {
+            const searchInput = document.getElementById('searchInput');
+            searchInput.addEventListener('input', performSearch);
+        }
+
+        // Perform Search
+        function performSearch() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            
+            if (searchTerm === '') {
+                filterProducts(currentFilter);
+                return;
+            }
+
+            // Search across all products
+            let foundProducts = [];
+            let currentCategory = 'all';
+
+            for (const [category, items] of Object.entries(products)) {
+                const filtered = items.filter(product => 
+                    product.name.toLowerCase().includes(searchTerm) ||
+                    product.description.toLowerCase().includes(searchTerm)
+                );
+                foundProducts = foundProducts.concat(filtered);
+            }
+
+            // If results found, display them
+            if (foundProducts.length > 0) {
+                // Determine category from first result
+                const firstCategory = foundProducts[0].category;
+                filterProducts(firstCategory, foundProducts);
+            } else {
+                // Clear all grids
+                document.getElementById('cupcakesGrid').innerHTML = '<p style="grid-column: 1 / -1; text-align: center; padding: 40px; color: #7F8C8D;">Aucun produit trouvé</p>';
+                document.getElementById('coffeeGrid').innerHTML = '';
+                document.getElementById('additivesGrid').innerHTML = '';
+            }
+        }
+
+        // Render Products
+        function renderProducts(filter, customProducts = null) {
+            const cupcakesGrid = document.getElementById('cupcakesGrid');
+            const coffeeGrid = document.getElementById('coffeeGrid');
+            const additivesGrid = document.getElementById('additivesGrid');
+
+            currentFilter = filter;
+
+            // Clear grids
+            cupcakesGrid.innerHTML = '';
+            coffeeGrid.innerHTML = '';
+            additivesGrid.innerHTML = '';
+
+            if (customProducts) {
+                // Render search results
+                customProducts.forEach(product => {
+                    const card = createProductCard(product);
+                    if (product.category === 'cupcake') cupcakesGrid.appendChild(card);
+                    else if (product.category === 'coffee') coffeeGrid.appendChild(card);
+                    else if (product.category === 'additive') additivesGrid.appendChild(card);
+                });
+            } else {
+                // Render all products
+                products.cupcakes.forEach(product => {
+                    if (filter === 'all' || filter === 'cupcake') {
+                        cupcakesGrid.appendChild(createProductCard(product));
+                    }
+                });
+
+                products.coffee.forEach(product => {
+                    if (filter === 'all' || filter === 'coffee') {
+                        coffeeGrid.appendChild(createProductCard(product));
+                    }
+                });
+
+                products.additives.forEach(product => {
+                    if (filter === 'all' || filter === 'additive') {
+                        additivesGrid.appendChild(createProductCard(product));
+                    }
+                });
+            }
+
+            // Hide/show sections based on filter
+            const cupcakesSection = cupcakesGrid.parentElement;
+            const coffeeSection = coffeeGrid.parentElement;
+            const additivesSection = additivesGrid.parentElement;
+
+            if (customProducts) {
+                cupcakesSection.style.display = cupcakesGrid.children.length > 0 ? 'block' : 'none';
+                coffeeSection.style.display = coffeeGrid.children.length > 0 ? 'block' : 'none';
+                additivesSection.style.display = additivesGrid.children.length > 0 ? 'block' : 'none';
+            } else {
+                cupcakesSection.style.display = (filter === 'all' || filter === 'cupcake') ? 'block' : 'none';
+                coffeeSection.style.display = (filter === 'all' || filter === 'coffee') ? 'block' : 'none';
+                additivesSection.style.display = (filter === 'all' || filter === 'additive') ? 'block' : 'none';
+            }
+        }
+
+        // Create Product Card
+        function createProductCard(product) {
+            const card = document.createElement('div');
+            card.className = 'product-card';
+            card.id = product.id;
+            card.innerHTML = `
+                <div class="product-image">${product.emoji}</div>
+                <div class="product-info">
+                    <div class="product-name">${product.name}</div>
+                    <div class="product-description">${product.description}</div>
+                    <div class="product-price">${product.price}</div>
+                </div>
+            `;
+            return card;
+        }
+
+        // Filter Products
+        function filterProducts(filter, customProducts = null) {
+            // Update active button
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            if (event) {
+                event.target.classList.add('active');
+            } else {
+                // Set active based on filter name
+                document.querySelectorAll('.filter-btn').forEach(btn => {
+                    if (btn.textContent.toLowerCase().includes(filter === 'all' ? 'tous' : 
+                        filter === 'cupcake' ? 'cupcake' : 
+                        filter === 'coffee' ? 'café' : 'fruit')) {
+                        btn.classList.add('active');
+                    }
+                });
+            }
+
+            renderProducts(filter, customProducts);
+            document.getElementById('searchInput').value = '';
+        }
+
+        // Store current sort for each category
+        let currentSort = {
+            cupcake: 'default',
+            coffee: 'default',
+            additive: 'default'
+        };
+
+        // Sort Products
+        function sortProducts(category, sortType) {
+            const categoryData = category === 'cupcake' ? products.cupcakes : category === 'coffee' ? products.coffee : products.additives;
+            let sortedProducts = [...categoryData];
+
+            // Sort based on type
+            if (sortType === 'alpha') {
+                sortedProducts.sort((a, b) => a.name.localeCompare(b.name, 'fr'));
+            } else if (sortType === 'price-asc') {
+                sortedProducts.sort((a, b) => {
+                    const priceA = parseFloat(a.price.replace(/[^\d.,]/g, '').replace(',', '.'));
+                    const priceB = parseFloat(b.price.replace(/[^\d.,]/g, '').replace(',', '.'));
+                    return priceA - priceB;
+                });
+            } else if (sortType === 'price-desc') {
+                sortedProducts.sort((a, b) => {
+                    const priceA = parseFloat(a.price.replace(/[^\d.,]/g, '').replace(',', '.'));
+                    const priceB = parseFloat(b.price.replace(/[^\d.,]/g, '').replace(',', '.'));
+                    return priceB - priceA;
+                });
+            }
+
+            // Update current sort
+            currentSort[category] = sortType;
+
+            // Update grid with sorted products
+            if (category === 'cupcake') {
+                document.getElementById('cupcakesGrid').innerHTML = '';
+                sortedProducts.forEach(product => {
+                    document.getElementById('cupcakesGrid').appendChild(createProductCard(product));
+                });
+                updateSortButtons('cupcakesSortFilters', sortType);
+            } else if (category === 'coffee') {
+                document.getElementById('coffeeGrid').innerHTML = '';
+                sortedProducts.forEach(product => {
+                    document.getElementById('coffeeGrid').appendChild(createProductCard(product));
+                });
+                updateSortButtons('coffeeSortFilters', sortType);
+            } else if (category === 'additive') {
+                document.getElementById('additivesGrid').innerHTML = '';
+                sortedProducts.forEach(product => {
+                    document.getElementById('additivesGrid').appendChild(createProductCard(product));
+                });
+                updateSortButtons('additivesSortFilters', sortType);
+            }
+        }
+
+        // Update sort button active state
+        function updateSortButtons(containerId, sortType) {
+            const container = document.getElementById(containerId);
+            if (container) {
+                container.querySelectorAll('.sort-btn').forEach(btn => {
+                    btn.classList.remove('active-sort');
+                });
+                // Find and mark the active button
+                const buttons = container.querySelectorAll('.sort-btn');
+                if (sortType === 'alpha' && buttons[0]) buttons[0].classList.add('active-sort');
+                if (sortType === 'price-asc' && buttons[1]) buttons[1].classList.add('active-sort');
+                if (sortType === 'price-desc' && buttons[2]) buttons[2].classList.add('active-sort');
+            }
+        }
+
+        // Handle Contact Form Submission
+        function handleContactSubmit(event) {
+            event.preventDefault();
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+
+            // Show success message
+            alert(`Merci ${name}, votre message a été envoyé avec succès!\n\nNous vous répondrons à ${email} dès que possible.`);
+            
+            // Reset form
+            event.target.reset();
+        }
+
+        // Scroll To Product
+        function scrollToProduct(productId) {
+            const element = document.getElementById(productId);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+    </script>
 </body>
 </html>
