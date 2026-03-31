@@ -1,1 +1,80 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dessert Bar</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/framer-motion/dist/framer-motion.umd.js"></script>
+  <style>
+    html { scroll-behavior: smooth; }
+  </style>
+</head>
+<body class="bg-white text-gray-800 font-sans">
 
+  <!-- Hero -->
+  <section class="h-screen flex flex-col justify-center items-center text-center px-4">
+    <h1 class="text-5xl font-bold mb-4">Sweet Heaven</h1>
+    <p class="text-lg text-gray-500 mb-6">Le bar à desserts moderne</p>
+    <a href="#menu" class="px-6 py-3 bg-black text-white rounded-full hover:bg-gray-800 transition">Voir le menu</a>
+  </section>
+
+  <!-- Menu -->
+  <section id="menu" class="py-20 px-6 max-w-5xl mx-auto">
+    <h2 class="text-3xl font-semibold text-center mb-12">Notre Menu</h2>
+
+    <div class="grid md:grid-cols-2 gap-10">
+
+      <div class="group p-6 border rounded-2xl hover:shadow-xl transition duration-300">
+        <h3 class="text-xl font-semibold mb-2">Gaufres</h3>
+        <p class="text-gray-500">Nutella, fruits frais, chantilly</p>
+      </div>
+
+      <div class="group p-6 border rounded-2xl hover:shadow-xl transition duration-300">
+        <h3 class="text-xl font-semibold mb-2">Crêpes</h3>
+        <p class="text-gray-500">Sucre, caramel beurre salé, chocolat</p>
+      </div>
+
+      <div class="group p-6 border rounded-2xl hover:shadow-xl transition duration-300">
+        <h3 class="text-xl font-semibold mb-2">Milkshakes</h3>
+        <p class="text-gray-500">Vanille, fraise, Oreo</p>
+      </div>
+
+      <div class="group p-6 border rounded-2xl hover:shadow-xl transition duration-300">
+        <h3 class="text-xl font-semibold mb-2">Glaces</h3>
+        <p class="text-gray-500">2 ou 3 boules au choix</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="bg-gray-100 py-20 px-6 text-center">
+    <h2 class="text-3xl font-semibold mb-6">À propos</h2>
+    <p class="max-w-2xl mx-auto text-gray-600">
+      Chez Sweet Heaven, nous créons des desserts gourmands avec des ingrédients de qualité pour une expérience unique.
+    </p>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-10 text-center text-gray-400 text-sm">
+    © 2026 Sweet Heaven - Tous droits réservés
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('opacity-100','translate-y-0');
+        }
+      });
+    }, { threshold: 0.2 });
+
+    document.querySelectorAll('section, .group').forEach(el => {
+      el.classList.add('opacity-0','translate-y-10','transition','duration-700');
+      observer.observe(el);
+    });
+  </script>
+
+</body>
+</html>
