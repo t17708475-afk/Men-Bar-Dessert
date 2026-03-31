@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menu Desserts - Cupcakes Premium & Café Artisan</title>
+    <title>Le K Délices - Bar à Dessert Premium</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -299,6 +299,203 @@
             border-color: var(--primary-color);
         }
 
+        /* Flipbook Menu */
+        .flipbook-container {
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 0 20px;
+            background: var(--white);
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+        }
+
+        .flipbook-header {
+            background: linear-gradient(135deg, var(--secondary-color) 0%, #34495E 100%);
+            color: var(--white);
+            padding: 30px;
+            text-align: center;
+        }
+
+        .flipbook-header h2 {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .flipbook-header p {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .flipbook-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            min-height: 600px;
+            position: relative;
+        }
+
+        .flipbook-page {
+            display: none;
+            padding: 50px 40px;
+            animation: fadeInPage 0.4s ease;
+        }
+
+        .flipbook-page.active {
+            display: block;
+        }
+
+        @keyframes fadeInPage {
+            from {
+                opacity: 0;
+                transform: translateX(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .page-title {
+            font-size: 28px;
+            color: var(--dark-text);
+            margin-bottom: 30px;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        .page-products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .flipbook-navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 30px 40px;
+            background: var(--light-bg);
+            border-top: 1px solid #E8E8E8;
+        }
+
+        .nav-arrow {
+            background: var(--primary-color);
+            color: var(--white);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 24px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nav-arrow:hover:not(:disabled) {
+            background: #FF5A8F;
+            transform: scale(1.1);
+        }
+
+        .nav-arrow:disabled {
+            background: #CCC;
+            cursor: not-allowed;
+            opacity: 0.5;
+        }
+
+        .page-indicator {
+            text-align: center;
+            font-weight: 600;
+            color: var(--secondary-color);
+            font-size: 14px;
+        }
+
+        .page-dots {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #DDD;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .dot.active {
+            background: var(--primary-color);
+            transform: scale(1.2);
+        }
+
+        .dot:hover {
+            background: var(--accent-color);
+        }
+
+        .page-product-card {
+            background: var(--white);
+            border: 2px solid #F0F0F0;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .page-product-card:hover {
+            box-shadow: 0 8px 25px rgba(255, 107, 157, 0.2);
+            border-color: var(--primary-color);
+            transform: translateY(-5px);
+        }
+
+        .page-product-image {
+            width: 100%;
+            height: 150px;
+            background: linear-gradient(135deg, #FFE0E6 0%, #FFF4D6 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 60px;
+            transition: all 0.3s ease;
+        }
+
+        .page-product-card:hover .page-product-image {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+        }
+
+        .page-product-info {
+            padding: 15px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .page-product-name {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--dark-text);
+            margin-bottom: 8px;
+        }
+
+        .page-product-description {
+            font-size: 12px;
+            color: #7F8C8D;
+            margin-bottom: 10px;
+            flex-grow: 1;
+        }
+
+        .page-product-price {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
         /* Featured Section */
         .featured-section {
             background: linear-gradient(135deg, var(--primary-color) 0%, #FF8EAD 100%);
@@ -568,7 +765,7 @@
     <!-- Navigation -->
     <nav>
         <div class="nav-container">
-            <a href="pdf test.pdf" class="logo">🧁 Menu Desserts</a>
+            <a href="#" class="logo">🍰 Le K Délices</a>
             <ul class="nav-links">
                 <li><a href="#contact">Contact</a></li>
             </ul>
@@ -577,65 +774,47 @@
 
     <!-- Hero Section -->
     <section class="hero">
-        <h1>Bienvenue au Paradis des Desserts</h1>
-        <p>Découvrez notre collection exquise de cupcakes premium et de café artisan</p>
-        <button class="cta-button" onclick="document.getElementById('cupcakes').scrollIntoView({behavior: 'smooth'})">Découvrir le Menu</button>
+        <h1>Bienvenue au Le K Délices</h1>
+        <p>Un bar à dessert convivial avec un menu délicieux à composer</p>
+        <button class="cta-button" onclick="document.getElementById('menuFlipbook').scrollIntoView({behavior: 'smooth'})">Découvrir le Menu</button>
     </section>
 
     <!-- Filter Section -->
-    <div class="filter-section">
-        <button class="filter-btn active" onclick="filterProducts('all')">Tous les Produits</button>
-        <button class="filter-btn" onclick="filterProducts('cupcake')">Cupcakes</button>
-        <button class="filter-btn" onclick="filterProducts('coffee')">Café</button>
-        <button class="filter-btn" onclick="filterProducts('additive')">Fruits</button>
-    </div>
+    <!-- Removed - Now using Flipbook Menu -->
 
     <!-- Search Bar -->
-    <section class="search-section">
-        <div class="search-bar">
-            <input type="text" class="search-input" id="searchInput" placeholder="Rechercher un produit..." autocomplete="off">
-            <i class="fas fa-search"></i>
-        </div>
-    </section>
+    <!-- Removed - Now using Flipbook Menu -->
 
-    <!-- Cupcakes Section -->
-    <section class="products-section">
-        <h2 class="section-title" id="cupcakes">Menu Cupcakes</h2>
-        <div class="sort-filters" id="cupcakesSortFilters">
-            <button class="sort-btn" onclick="sortProducts('cupcake', 'alpha')">A-Z</button>
-            <button class="sort-btn" onclick="sortProducts('cupcake', 'price-asc')">Prix ↑</button>
-            <button class="sort-btn" onclick="sortProducts('cupcake', 'price-desc')">Prix ↓</button>
+    <!-- FLIPBOOK MENU -->
+    <section class="flipbook-container" id="menuFlipbook">
+        <div class="flipbook-header">
+            <h2>🍰 Le K Délices - Bar à Dessert</h2>
+            <p>📖 Notre Menu Complet - Naviguez entre nos rubriques avec les flèches</p>
         </div>
-        <div class="products-grid" id="cupcakesGrid"></div>
+
+        <div class="flipbook-content" id="flipbookContent">
+            <!-- Pages will be inserted here by JavaScript -->
+        </div>
+
+        <div class="flipbook-navigation">
+            <button class="nav-arrow" id="prevBtn" onclick="previousPage()">❮</button>
+            <div>
+                <div class="page-indicator">
+                    <span id="currentPage">Rubrique 1</span> / 6
+                </div>
+                <div class="page-dots" id="pageDotsContainer">
+                    <!-- Dots will be inserted here by JavaScript -->
+                </div>
+            </div>
+            <button class="nav-arrow" id="nextBtn" onclick="nextPage()">❯</button>
+        </div>
     </section>
 
     <!-- Featured Section -->
     <section class="featured-section">
-        <h2>❤️ Cupcake Spécial</h2>
-        <p>Notre cupcake signature, confectionné avec amour et passion. Préparé avec des ingrédients premium et garni de notre glaçage signature. Parfait pour célébrer les moments spéciaux avec ceux que vous aimez.</p>
-        <button class="cta-button" onclick="scrollToProduct('love-cupcake')">Voir les Détails</button>
-    </section>
-
-    <!-- Coffee Section -->
-    <section class="products-section">
-        <h2 class="section-title" id="coffee">Café Chaud</h2>
-        <div class="sort-filters" id="coffeeSortFilters">
-            <button class="sort-btn" onclick="sortProducts('coffee', 'alpha')">A-Z</button>
-            <button class="sort-btn" onclick="sortProducts('coffee', 'price-asc')">Prix ↑</button>
-            <button class="sort-btn" onclick="sortProducts('coffee', 'price-desc')">Prix ↓</button>
-        </div>
-        <div class="products-grid" id="coffeeGrid"></div>
-    </section>
-
-    <!-- Additives Section -->
-    <section class="products-section">
-        <h2 class="section-title" id="additives">Fruits & Additifs</h2>
-        <div class="sort-filters" id="additivesSortFilters">
-            <button class="sort-btn" onclick="sortProducts('additive', 'alpha')">A-Z</button>
-            <button class="sort-btn" onclick="sortProducts('additive', 'price-asc')">Prix ↑</button>
-            <button class="sort-btn" onclick="sortProducts('additive', 'price-desc')">Prix ↓</button>
-        </div>
-        <div class="products-grid" id="additivesGrid"></div>
+        <h2>⭐ Nos Desserts Signature</h2>
+        <p>Découvrez nos créations exclusives du moment. Chaque dessert est confectionné avec passion et les meilleurs ingrédients pour vous offrir une expérience gustative inoubliable.</p>
+        <button class="cta-button" onclick="scrollToProduct('signature-1')">Voir les Détails</button>
     </section>
 
     <!-- Contact Section -->
@@ -724,385 +903,410 @@
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2026 Menu Desserts. Tous droits réservés. | Réalisé avec ❤️</p>
+        <p>&copy; 2026 Le K Délices - Bar à Dessert. Tous droits réservés. | Réalisé avec ❤️</p>
     </footer>
 
     <script>
-        // Products Data
-        const products = {
-            cupcakes: [
-                {
-                    id: 'cupcake-lemon',
-                    name: 'Cupcake au Citron',
-                    description: 'Cupcake savoureux au citron avec une texture légère et aérée',
-                    price: '4.50 €',
-                    emoji: '🧁',
-                    category: 'cupcake'
-                },
-                {
-                    id: 'cupcake-cherry',
-                    name: 'Cupcake à la Cerise',
-                    description: 'Cupcake sucré aux cerises avec une délicate garniture de cerises',
-                    price: '4.50 €',
-                    emoji: '🧁',
-                    category: 'cupcake'
-                },
-                {
-                    id: 'sweet-berry',
-                    name: 'Cupcake Sucré aux Fruits Rouges',
-                    description: 'Délicieux cupcake aux fruits rouges mélangés',
-                    price: '4.50 €',
-                    emoji: '🧁',
-                    category: 'cupcake'
-                },
-                {
-                    id: 'romantic-cupcake',
-                    name: 'Cupcake Romantique',
-                    description: 'Elegant cupcake au chocolat avec glaçage rose, parfait pour les occasions romantiques',
-                    price: '4.50 €',
-                    emoji: '🧁',
-                    category: 'cupcake'
-                },
-                {
-                    id: 'chocolate-cupcake',
-                    name: 'Cupcake au Chocolat',
-                    description: 'Riche et délicieux cupcake au chocolat avec une saveur de cacao profonde',
-                    price: '4.50 €',
-                    emoji: '🧁',
-                    category: 'cupcake'
-                },
-                {
-                    id: 'love-cupcake',
-                    name: 'Cupcake Spécial',
-                    description: 'Notre cupcake signature avec des ingrédients premium et glaçage signature',
-                    price: '5.50 €',
-                    emoji: '❤️',
-                    category: 'cupcake'
-                }
-            ],
-            coffee: [
-                {
-                    id: 'cappuccino',
-                    name: 'Cappuccino',
-                    description: 'Espresso lisse avec une généreuse couche de mousse de lait crémeuse',
-                    price: '3.50 €',
-                    emoji: '☕',
-                    category: 'coffee'
-                },
-                {
-                    id: 'americano',
-                    name: 'Américano',
-                    description: 'Shots d\'espresso forts versés sur de l\'eau chaude, audacieux et riche',
-                    price: '3.00 €',
-                    emoji: '☕',
-                    category: 'coffee'
-                },
-                {
-                    id: 'macchiato',
-                    name: 'Macchiato',
-                    description: 'Espresso marqué avec une touche de mousse de lait pour un goût audacieux',
-                    price: '3.00 €',
-                    emoji: '☕',
-                    category: 'coffee'
-                },
-                {
-                    id: 'espresso',
-                    name: 'Espresso',
-                    description: 'Un shot pur et concentré de café premium de qualité supérieure',
-                    price: '2.50 €',
-                    emoji: '☕',
-                    category: 'coffee'
-                },
-                {
-                    id: 'irish-coffee',
-                    name: 'Café Irlandais',
-                    description: 'Classique café irlandais avec du whiskey et couronné de crème fouettée',
-                    price: '4.50 €',
-                    emoji: '☕',
-                    category: 'coffee'
-                }
-            ],
-            additives: [
-                {
-                    id: 'banana',
-                    name: 'Banane',
-                    description: 'Additif banane frais et crémeux pour une saveur riche',
-                    price: '0.80 €',
-                    emoji: '🍌',
-                    category: 'additive'
-                },
-                {
-                    id: 'cherry',
-                    name: 'Cerise',
-                    description: 'Topping cerise acidulé et sucré',
-                    price: '0.80 €',
-                    emoji: '🍒',
-                    category: 'additive'
-                },
-                {
-                    id: 'hazelnut',
-                    name: 'Noisette',
-                    description: 'Arôme riche et savoureux de noisette',
-                    price: '1.00 €',
-                    emoji: '🌰',
-                    category: 'additive'
-                },
-                {
-                    id: 'passion-fruit',
-                    name: 'Fruit de la Passion',
-                    description: 'Fruit de la passion exotique avec des notes tropicales',
-                    price: '1.00 €',
-                    emoji: '🟣',
-                    category: 'additive'
-                },
-                {
-                    id: 'orange',
-                    name: 'Orange',
-                    description: 'Saveur d\'agrumes orange brillante',
-                    price: '0.80 €',
-                    emoji: '🍊',
-                    category: 'additive'
-                },
-                {
-                    id: 'strawberry',
-                    name: 'Fraise',
-                    description: 'Additif fraise frais et sucré',
-                    price: '0.80 €',
-                    emoji: '🍓',
-                    category: 'additive'
-                },
-                {
-                    id: 'blueberry',
-                    name: 'Myrtille',
-                    description: 'Arôme myrtille riche en antioxydants',
-                    price: '1.00 €',
-                    emoji: '🫐',
-                    category: 'additive'
-                },
-                {
-                    id: 'tangerine',
-                    name: 'Mandarine',
-                    description: 'Mélange d\'agrumes mandarine sucré',
-                    price: '0.80 €',
-                    emoji: '🍊',
-                    category: 'additive'
-                }
-            ]
-        };
+        // Flipbook Menu Data - 6 Rubriques
+        const flipbookPages = [
+            {
+                title: '🍰 Les Desserts du Moment',
+                products: [
+                    {
+                        id: 'dessert-moment-1',
+                        name: 'Tiramisu Gourmand',
+                        description: 'Tiramisu savoureux aux couches délicieuses de mascarpone et café',
+                        price: '6.50 €',
+                        emoji: '🍰'
+                    },
+                    {
+                        id: 'dessert-moment-2',
+                        name: 'Mousse au Chocolat',
+                        description: 'Mousse riche et aérée au chocolat noir premium',
+                        price: '5.50 €',
+                        emoji: '🍫'
+                    },
+                    {
+                        id: 'dessert-moment-3',
+                        name: 'Tarte aux Fruits Rouges',
+                        description: 'Tarte fraîche avec fruits rouges frais du jour',
+                        price: '6.00 €',
+                        emoji: '🍓'
+                    }
+                ]
+            },
+            {
+                title: '🧊 Boissons Fraîches & Cocktails',
+                products: [
+                    {
+                        id: 'smoothie-fraise',
+                        name: 'Smoothie Fraise-Banane',
+                        description: 'Mélange frais et sucré de fruits rouges et banane',
+                        price: '5.00 €',
+                        emoji: '🍓'
+                    },
+                    {
+                        id: 'ice-cream-drink',
+                        name: 'Milkshake Vanille',
+                        description: 'Boisson glacée onctueuse à la vanille premium',
+                        price: '4.50 €',
+                        emoji: '🥛'
+                    },
+                    {
+                        id: 'cocktail-mojito',
+                        name: 'Mojito Frais',
+                        description: 'Cocktail rafraîchissant avec menthe et citron frais',
+                        price: '7.00 €',
+                        emoji: '🍹'
+                    },
+                    {
+                        id: 'cocktail-berry',
+                        name: 'Cocktail Baies Sauvages',
+                        description: 'Mélange exotique de baies avec un twist sucré',
+                        price: '7.50 €',
+                        emoji: '🍸'
+                    }
+                ]
+            },
+            {
+                title: '☕ Boissons Chaudes',
+                subtitle: '❄️ Combos',
+                products: [
+                    {
+                        id: 'cappuccino-hot',
+                        name: 'Cappuccino',
+                        description: 'Espresso lisse avec mousse de lait crémeuse',
+                        price: '3.50 €',
+                        emoji: '☕',
+                        section: 'hot'
+                    },
+                    {
+                        id: 'latte-hot',
+                        name: 'Café au Lait',
+                        description: 'Café doux et réconfortant avec lait chaud',
+                        price: '3.00 €',
+                        emoji: '☕',
+                        section: 'hot'
+                    },
+                    {
+                        id: 'chocolate-hot',
+                        name: 'Chocolat Chaud',
+                        description: 'Chocolat riche et savoureux pour les froids jours',
+                        price: '4.00 €',
+                        emoji: '☕',
+                        section: 'hot'
+                    },
+                    {
+                        id: 'combo-dessert-cafe',
+                        name: 'Combo Dessert + Café',
+                        description: 'Choisissez un dessert + boisson chaude',
+                        price: '9.99 €',
+                        emoji: '❄️',
+                        section: 'combo'
+                    },
+                    {
+                        id: 'combo-gourmand',
+                        name: 'Combo Gourmand',
+                        description: 'Dessert premium + boisson spécialisée + friandise',
+                        price: '14.99 €',
+                        emoji: '❄️',
+                        section: 'combo'
+                    }
+                ]
+            },
+            {
+                title: '🎨 Menus Classiques - Desserts à Composer',
+                products: [
+                    {
+                        id: 'crepes-sucre',
+                        name: 'Crêpes à Composer',
+                        description: 'Choisissez vos garnitures parmi nos délices',
+                        price: '5.50 €',
+                        emoji: '🥞'
+                    },
+                    {
+                        id: 'waffle-compose',
+                        name: 'Gaufres Gourmandes',
+                        description: 'Gaufres chaudes avec vos toppings favoris',
+                        price: '6.00 €',
+                        emoji: '🧇'
+                    },
+                    {
+                        id: 'cake-custom',
+                        name: 'Gâteau Personnalisé',
+                        description: 'Créez votre gâteau parfait avec nos options',
+                        price: '7.50 €',
+                        emoji: '🍰'
+                    }
+                ]
+            },
+            {
+                title: '⭐ Desserts Signature',
+                subtitle: '🍽️ Desserts à la Carte',
+                products: [
+                    {
+                        id: 'signature-1',
+                        name: 'Délice du Pâtissier',
+                        description: 'Notre création signature avec les meilleures saveurs',
+                        price: '8.50 €',
+                        emoji: '👨‍🍳',
+                        section: 'signature'
+                    },
+                    {
+                        id: 'signature-2',
+                        name: 'Symphonie Gourmande',
+                        description: 'Composition exquise de textures et saveurs',
+                        price: '9.00 €',
+                        emoji: '✨',
+                        section: 'signature'
+                    },
+                    {
+                        id: 'carte-1',
+                        name: 'Panna Cotta aux Fruits',
+                        description: 'Crémeuse panna cotta garnie de fruits frais',
+                        price: '5.50 €',
+                        emoji: '🍮',
+                        section: 'carte'
+                    },
+                    {
+                        id: 'carte-2',
+                        name: 'Crème Brûlée',
+                        description: 'Classique français avec caramel croustillant',
+                        price: '5.00 €',
+                        emoji: '🍯',
+                        section: 'carte'
+                    },
+                    {
+                        id: 'carte-3',
+                        name: 'Pavlova aux Fruits',
+                        description: 'Légère meringue avec fruits et crème chantilly',
+                        price: '6.00 €',
+                        emoji: '🎂',
+                        section: 'carte'
+                    }
+                ]
+            },
+            {
+                title: '🥗 En-Cas Salés',
+                subtitle: '🥗 Crêpes Salées & Salades',
+                products: [
+                    {
+                        id: 'crepe-jambon',
+                        name: 'Crêpe Jambon-Fromage',
+                        description: 'Crêpe généreuse avec jambon de Paris et fromage fondant',
+                        price: '6.50 €',
+                        emoji: '🥓',
+                        section: 'crepes'
+                    },
+                    {
+                        id: 'crepe-champignon',
+                        name: 'Crêpe Champignons-Oeufs',
+                        description: 'Crêpe savoureuse avec champignons poêlés et oeufs frais',
+                        price: '7.00 €',
+                        emoji: '🍄',
+                        section: 'crepes'
+                    },
+                    {
+                        id: 'crepe-legumes',
+                        name: 'Crêpe Légumes Grillés',
+                        description: 'Crêpe complète avec légumes frais et sauce maison',
+                        price: '6.50 €',
+                        emoji: '🌱',
+                        section: 'crepes'
+                    },
+                    {
+                        id: 'salade-caesar',
+                        name: 'Salade César',
+                        description: 'Salade fraîche romaine avec parmesan et croûtons',
+                        price: '7.50 €',
+                        emoji: '🥗',
+                        section: 'salades'
+                    },
+                    {
+                        id: 'salade-nicoise',
+                        name: 'Salade Niçoise',
+                        description: 'Salade méditerranéenne avec œuf, thon et tomates',
+                        price: '8.00 €',
+                        emoji: '🍅',
+                        section: 'salades'
+                    },
+                    {
+                        id: 'salade-chevre',
+                        name: 'Salade Chèvre Chaud',
+                        description: 'Salade verte avec fromage de chèvre chaud grillé',
+                        price: '8.50 €',
+                        emoji: '🧅',
+                        section: 'salades'
+                    }
+                ]
+            }
+        ];
 
-        let currentFilter = 'all';
+        let currentPageIndex = 0;
 
         // Initialize
         document.addEventListener('DOMContentLoaded', function() {
-            renderProducts('all');
-            setupSearch();
+            initializeFlipbook();
         });
 
-        // Setup Search Functionality
-        function setupSearch() {
-            const searchInput = document.getElementById('searchInput');
-            searchInput.addEventListener('input', performSearch);
+        // Initialize Flipbook
+        function initializeFlipbook() {
+            renderFlipbookPages();
+            updateFlipbookNavigation();
         }
 
-        // Perform Search
-        function performSearch() {
-            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
-            
-            if (searchTerm === '') {
-                filterProducts(currentFilter);
-                return;
-            }
+        // Render all flipbook pages
+        function renderFlipbookPages() {
+            const flipbookContent = document.getElementById('flipbookContent');
+            flipbookContent.innerHTML = '';
 
-            // Search across all products
-            let foundProducts = [];
-            let currentCategory = 'all';
-
-            for (const [category, items] of Object.entries(products)) {
-                const filtered = items.filter(product => 
-                    product.name.toLowerCase().includes(searchTerm) ||
-                    product.description.toLowerCase().includes(searchTerm)
-                );
-                foundProducts = foundProducts.concat(filtered);
-            }
-
-            // If results found, display them
-            if (foundProducts.length > 0) {
-                // Determine category from first result
-                const firstCategory = foundProducts[0].category;
-                filterProducts(firstCategory, foundProducts);
-            } else {
-                // Clear all grids
-                document.getElementById('cupcakesGrid').innerHTML = '<p style="grid-column: 1 / -1; text-align: center; padding: 40px; color: #7F8C8D;">Aucun produit trouvé</p>';
-                document.getElementById('coffeeGrid').innerHTML = '';
-                document.getElementById('additivesGrid').innerHTML = '';
-            }
+            flipbookPages.forEach((page, index) => {
+                const pageDiv = document.createElement('div');
+                pageDiv.className = `flipbook-page ${index === currentPageIndex ? 'active' : ''}`;
+                
+                let pageContent = `<div class="page-title">${page.title}</div>`;
+                
+                // Check if page has sections
+                if (page.subtitle) {
+                    // Separate products by section
+                    const sections = {};
+                    page.products.forEach(product => {
+                        const section = product.section || 'default';
+                        if (!sections[section]) {
+                            sections[section] = [];
+                        }
+                        sections[section].push(product);
+                    });
+                    
+                    // For page 3 (boissons chaudes/combos)
+                    if (index === 2) {
+                        pageContent += `
+                            <div style="margin-bottom: 40px;">
+                                <h3 style="font-size: 18px; color: var(--secondary-color); margin-bottom: 15px; text-align: center;">☕ Boissons Chaudes</h3>
+                                <div class="page-products-grid">
+                                    ${(sections['hot'] || []).map(product => createFlipbookProductCard(product)).join('')}
+                                </div>
+                            </div>
+                            <div style="border-top: 2px solid #E8E8E8; padding-top: 30px; margin-top: 30px;">
+                                <h3 style="font-size: 18px; color: var(--secondary-color); margin-bottom: 15px; text-align: center;">⛄ Combos</h3>
+                                <div class="page-products-grid">
+                                    ${(sections['combo'] || []).map(product => createFlipbookProductCard(product)).join('')}
+                                </div>
+                            </div>
+                        `;
+                    }
+                    // For page 5 (desserts signature/carte)
+                    else if (index === 4) {
+                        pageContent += `
+                            <div style="margin-bottom: 40px;">
+                                <h3 style="font-size: 18px; color: var(--secondary-color); margin-bottom: 15px; text-align: center;">⭐ Desserts Signature</h3>
+                                <div class="page-products-grid">
+                                    ${(sections['signature'] || []).map(product => createFlipbookProductCard(product)).join('')}
+                                </div>
+                            </div>
+                            <div style="border-top: 2px solid #E8E8E8; padding-top: 30px; margin-top: 30px;">
+                                <h3 style="font-size: 18px; color: var(--secondary-color); margin-bottom: 15px; text-align: center;">🍽️ Desserts à la Carte</h3>
+                                <div class="page-products-grid">
+                                    ${(sections['carte'] || []).map(product => createFlipbookProductCard(product)).join('')}
+                                </div>
+                            </div>
+                        `;
+                    }
+                    // For page 6 (crêpes/salades)
+                    else if (index === 5) {
+                        pageContent += `
+                            <div style="margin-bottom: 40px;">
+                                <h3 style="font-size: 18px; color: var(--secondary-color); margin-bottom: 15px; text-align: center;">🥞 Crêpes Salées</h3>
+                                <div class="page-products-grid">
+                                    ${(sections['crepes'] || []).map(product => createFlipbookProductCard(product)).join('')}
+                                </div>
+                            </div>
+                            <div style="border-top: 2px solid #E8E8E8; padding-top: 30px; margin-top: 30px;">
+                                <h3 style="font-size: 18px; color: var(--secondary-color); margin-bottom: 15px; text-align: center;">🥗 Salades</h3>
+                                <div class="page-products-grid">
+                                    ${(sections['salades'] || []).map(product => createFlipbookProductCard(product)).join('')}
+                                </div>
+                            </div>
+                        `;
+                    }
+                } else {
+                    // Simple grid if no sections
+                    pageContent += `
+                        <div class="page-products-grid">
+                            ${page.products.map(product => createFlipbookProductCard(product)).join('')}
+                        </div>
+                    `;
+                }
+                
+                pageDiv.innerHTML = pageContent;
+                flipbookContent.appendChild(pageDiv);
+            });
         }
 
-        // Render Products
-        function renderProducts(filter, customProducts = null) {
-            const cupcakesGrid = document.getElementById('cupcakesGrid');
-            const coffeeGrid = document.getElementById('coffeeGrid');
-            const additivesGrid = document.getElementById('additivesGrid');
-
-            currentFilter = filter;
-
-            // Clear grids
-            cupcakesGrid.innerHTML = '';
-            coffeeGrid.innerHTML = '';
-            additivesGrid.innerHTML = '';
-
-            if (customProducts) {
-                // Render search results
-                customProducts.forEach(product => {
-                    const card = createProductCard(product);
-                    if (product.category === 'cupcake') cupcakesGrid.appendChild(card);
-                    else if (product.category === 'coffee') coffeeGrid.appendChild(card);
-                    else if (product.category === 'additive') additivesGrid.appendChild(card);
-                });
-            } else {
-                // Render all products
-                products.cupcakes.forEach(product => {
-                    if (filter === 'all' || filter === 'cupcake') {
-                        cupcakesGrid.appendChild(createProductCard(product));
-                    }
-                });
-
-                products.coffee.forEach(product => {
-                    if (filter === 'all' || filter === 'coffee') {
-                        coffeeGrid.appendChild(createProductCard(product));
-                    }
-                });
-
-                products.additives.forEach(product => {
-                    if (filter === 'all' || filter === 'additive') {
-                        additivesGrid.appendChild(createProductCard(product));
-                    }
-                });
-            }
-
-            // Hide/show sections based on filter
-            const cupcakesSection = cupcakesGrid.parentElement;
-            const coffeeSection = coffeeGrid.parentElement;
-            const additivesSection = additivesGrid.parentElement;
-
-            if (customProducts) {
-                cupcakesSection.style.display = cupcakesGrid.children.length > 0 ? 'block' : 'none';
-                coffeeSection.style.display = coffeeGrid.children.length > 0 ? 'block' : 'none';
-                additivesSection.style.display = additivesGrid.children.length > 0 ? 'block' : 'none';
-            } else {
-                cupcakesSection.style.display = (filter === 'all' || filter === 'cupcake') ? 'block' : 'none';
-                coffeeSection.style.display = (filter === 'all' || filter === 'coffee') ? 'block' : 'none';
-                additivesSection.style.display = (filter === 'all' || filter === 'additive') ? 'block' : 'none';
-            }
-        }
-
-        // Create Product Card
-        function createProductCard(product) {
-            const card = document.createElement('div');
-            card.className = 'product-card';
-            card.id = product.id;
-            card.innerHTML = `
-                <div class="product-image">${product.emoji}</div>
-                <div class="product-info">
-                    <div class="product-name">${product.name}</div>
-                    <div class="product-description">${product.description}</div>
-                    <div class="product-price">${product.price}</div>
+        // Create flipbook product card
+        function createFlipbookProductCard(product) {
+            return `
+                <div class="page-product-card" id="${product.id}">
+                    <div class="page-product-image">${product.emoji}</div>
+                    <div class="page-product-info">
+                        <div class="page-product-name">${product.name}</div>
+                        <div class="page-product-description">${product.description}</div>
+                        <div class="page-product-price">${product.price}</div>
+                    </div>
                 </div>
             `;
-            return card;
         }
 
-        // Filter Products
-        function filterProducts(filter, customProducts = null) {
-            // Update active button
-            document.querySelectorAll('.filter-btn').forEach(btn => {
-                btn.classList.remove('active');
+        // Update Navigation
+        function updateFlipbookNavigation() {
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const currentPageSpan = document.getElementById('currentPage');
+            const pageDotsContainer = document.getElementById('pageDotsContainer');
+
+            // Update page indicator
+            currentPageSpan.textContent = `Rubrique ${currentPageIndex + 1}`;
+
+            // Update page dots
+            pageDotsContainer.innerHTML = '';
+            flipbookPages.forEach((_, index) => {
+                const dot = document.createElement('div');
+                dot.className = `dot ${index === currentPageIndex ? 'active' : ''}`;
+                dot.onclick = () => goToPage(index);
+                pageDotsContainer.appendChild(dot);
             });
-            
-            if (event) {
-                event.target.classList.add('active');
-            } else {
-                // Set active based on filter name
-                document.querySelectorAll('.filter-btn').forEach(btn => {
-                    if (btn.textContent.toLowerCase().includes(filter === 'all' ? 'tous' : 
-                        filter === 'cupcake' ? 'cupcake' : 
-                        filter === 'coffee' ? 'café' : 'fruit')) {
-                        btn.classList.add('active');
-                    }
-                });
-            }
 
-            renderProducts(filter, customProducts);
-            document.getElementById('searchInput').value = '';
+            // Update button states
+            prevBtn.disabled = currentPageIndex === 0;
+            nextBtn.disabled = currentPageIndex === flipbookPages.length - 1;
+
+            // Update page display
+            document.querySelectorAll('.flipbook-page').forEach((page, index) => {
+                page.classList.remove('active');
+                if (index === currentPageIndex) {
+                    page.classList.add('active');
+                }
+            });
         }
 
-        // Store current sort for each category
-        let currentSort = {
-            cupcake: 'default',
-            coffee: 'default',
-            additive: 'default'
-        };
-
-        // Sort Products
-        function sortProducts(category, sortType) {
-            const categoryData = category === 'cupcake' ? products.cupcakes : category === 'coffee' ? products.coffee : products.additives;
-            let sortedProducts = [...categoryData];
-
-            // Sort based on type
-            if (sortType === 'alpha') {
-                sortedProducts.sort((a, b) => a.name.localeCompare(b.name, 'fr'));
-            } else if (sortType === 'price-asc') {
-                sortedProducts.sort((a, b) => {
-                    const priceA = parseFloat(a.price.replace(/[^\d.,]/g, '').replace(',', '.'));
-                    const priceB = parseFloat(b.price.replace(/[^\d.,]/g, '').replace(',', '.'));
-                    return priceA - priceB;
-                });
-            } else if (sortType === 'price-desc') {
-                sortedProducts.sort((a, b) => {
-                    const priceA = parseFloat(a.price.replace(/[^\d.,]/g, '').replace(',', '.'));
-                    const priceB = parseFloat(b.price.replace(/[^\d.,]/g, '').replace(',', '.'));
-                    return priceB - priceA;
-                });
-            }
-
-            // Update current sort
-            currentSort[category] = sortType;
-
-            // Update grid with sorted products
-            if (category === 'cupcake') {
-                document.getElementById('cupcakesGrid').innerHTML = '';
-                sortedProducts.forEach(product => {
-                    document.getElementById('cupcakesGrid').appendChild(createProductCard(product));
-                });
-                updateSortButtons('cupcakesSortFilters', sortType);
-            } else if (category === 'coffee') {
-                document.getElementById('coffeeGrid').innerHTML = '';
-                sortedProducts.forEach(product => {
-                    document.getElementById('coffeeGrid').appendChild(createProductCard(product));
-                });
-                updateSortButtons('coffeeSortFilters', sortType);
-            } else if (category === 'additive') {
-                document.getElementById('additivesGrid').innerHTML = '';
-                sortedProducts.forEach(product => {
-                    document.getElementById('additivesGrid').appendChild(createProductCard(product));
-                });
-                updateSortButtons('additivesSortFilters', sortType);
+        // Navigation Functions
+        function nextPage() {
+            if (currentPageIndex < flipbookPages.length - 1) {
+                currentPageIndex++;
+                updateFlipbookNavigation();
             }
         }
 
-        // Update sort button active state
-        function updateSortButtons(containerId, sortType) {
-            const container = document.getElementById(containerId);
-            if (container) {
-                container.querySelectorAll('.sort-btn').forEach(btn => {
-                    btn.classList.remove('active-sort');
-                });
-                // Find and mark the active button
-                const buttons = container.querySelectorAll('.sort-btn');
-                if (sortType === 'alpha' && buttons[0]) buttons[0].classList.add('active-sort');
-                if (sortType === 'price-asc' && buttons[1]) buttons[1].classList.add('active-sort');
-                if (sortType === 'price-desc' && buttons[2]) buttons[2].classList.add('active-sort');
+        function previousPage() {
+            if (currentPageIndex > 0) {
+                currentPageIndex--;
+                updateFlipbookNavigation();
             }
+        }
+
+        function goToPage(index) {
+            currentPageIndex = index;
+            updateFlipbookNavigation();
         }
 
         // Handle Contact Form Submission
@@ -1125,7 +1329,23 @@
         function scrollToProduct(productId) {
             const element = document.getElementById(productId);
             if (element) {
-                element.scrollIntoView({ behavior: 'smooth' });
+                // Find which page contains this product
+                flipbookPages.forEach((page, index) => {
+                    if (page.products.some(p => p.id === productId)) {
+                        currentPageIndex = index;
+                        updateFlipbookNavigation();
+                    }
+                });
+                setTimeout(() => {
+                    const card = document.getElementById(productId);
+                    if (card) {
+                        card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        card.style.transform = 'scale(1.05)';
+                        setTimeout(() => {
+                            card.style.transform = 'scale(1)';
+                        }, 300);
+                    }
+                }, 100);
             }
         }
     </script>
